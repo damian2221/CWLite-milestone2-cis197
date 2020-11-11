@@ -19,11 +19,14 @@ router.post('/add', isAuthenticated, async (req, res, next) => {
   const { questionText } = req.body
   const { username } = req.session
 
-  try {
-    await Question.create({ author: username, questionText })
-    res.send('Question added')
-  } catch (err) {
-    next(err)
+  if (!questionText) {
+    next('You must provide the question!')
+  } else {
+    try {
+      res.send(await Question.create({ author: username, questionText }))
+    } catch (err) {
+      next(err)
+    }
   }
 })
 
