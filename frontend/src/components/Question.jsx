@@ -80,7 +80,7 @@ const Question = ({
             />
             <button
               type="button"
-              lassName="btn btn-info btn-block"
+              className="btn btn-info btn-block"
               onClick={() => submitAnswer()}
             >
               Submit Answer
